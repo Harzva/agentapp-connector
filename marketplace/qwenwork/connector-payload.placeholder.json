@@ -1,0 +1,13 @@
+{
+  "_warning": "占位请求体：需企业部署 BASE_URL、Idempotency-Key 与 admin.v1.connectors.manage scope；当前不可提交。",
+  "server_key": "openbot",
+  "transport": "http",
+  "url": "https://mcp.example.invalid/mcp",
+  "auth_type": "none",
+  "clients": [],
+  "display_name": "OpenBot (placeholder)",
+  "display_name_cn": "OpenBot（占位）",
+  "description": "占位描述：需写明能访问什么业务系统、数据范围与前置条件",
+  "version": "0.0.0-placeholder",
+  "status": "NOT-SUBMITTED"
+}

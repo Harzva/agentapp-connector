@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "openbot": {
+      "url": "https://mcp.example.invalid/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OPENBOT_GRANT_TOKEN}"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm test
+      - run: npm run docs
+      - run: npm run packs
+      # 文档与上架材料必须与注册表同轮同步：生成后不允许出现未提交的 diff
+      - name: Fail on out-of-sync generated files
+        run: |
+          if ! git diff --quiet; then
+            git diff --stat
+            echo "::error::docs/ 或 marketplace/ 与注册表不同步；请运行 npm run docs && npm run packs 后提交"
+            exit 1
+          fi

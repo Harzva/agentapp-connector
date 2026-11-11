@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { overflow:hidden; }
+body { width:800px; height:300px; overflow:hidden; position:relative;
+  font-family:-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:linear-gradient(130deg,#0B1020 0%,#131A3C 52%,#0D1B2E 100%); color:#F4F6FB; }
+.glow1 { position:absolute; width:420px; height:420px; left:-120px; top:-160px;
+  background:radial-gradient(circle,rgba(124,58,237,.38),rgba(124,58,237,0) 68%); }
+.glow2 { position:absolute; width:520px; height:300px; right:-140px; bottom:-190px;
+  background:radial-gradient(circle,rgba(34,211,238,.16),rgba(34,211,238,0) 70%); }
+.grid { position:absolute; inset:0; opacity:.14;
+  background-image:linear-gradient(rgba(80,100,150,.5) .5px,transparent .5px),linear-gradient(90deg,rgba(80,100,150,.5) .5px,transparent .5px);
+  background-size:53px 53px; }
+.head { position:absolute; left:34px; top:30px; display:flex; align-items:center; gap:20px; }
+.mark { width:104px; height:104px; border-radius:26px;
+  background:linear-gradient(140deg,#4F46E5,#7C3AED 55%,#0891B2);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 34px rgba(124,58,237,.45); }
+.hub { width:40px; height:40px; position:relative; }
+.hub .ring { position:absolute; left:5px; top:5px; width:30px; height:30px; border-radius:50%; background:#fff; }
+.hub .core { position:absolute; left:14px; top:14px; width:12px; height:12px; border-radius:50%;
+  background:linear-gradient(140deg,#A5B4FC,#67E8F9); }
+.hub .arm { position:absolute; background:#fff; border-radius:3px; }
+.hub .a1 { left:-8px; top:-8px; width:38px; height:7px; transform:rotate(-45deg); transform-origin:center; }
+.hub .a2 { right:-8px; top:-8px; width:38px; height:7px; transform:rotate(45deg); transform-origin:center; }
+.hub .a3 { left:-8px; bottom:-8px; width:38px; height:7px; transform:rotate(45deg); transform-origin:center; }
+.hub .a4 { right:-8px; bottom:-8px; width:38px; height:7px; transform:rotate(-45deg); transform-origin:center; }
+.hub .dot { position:absolute; width:15px; height:15px; border-radius:50%; background:#fff; }
+.title h1 { font-size:38px; font-weight:800; letter-spacing:.2px; }
+.title .cn { font-size:17.5px; font-weight:700; margin-top:3px;
+  background:linear-gradient(90deg,#818CF8,#A78BFA 50%,#22D3EE);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.title .en { font-size:11px; color:#8B94B8; margin-top:4px; }
+.chips { position:absolute; left:34px; right:34px; top:158px; display:flex; gap:9px; }
+.chip { flex:1; height:76px; border-radius:14px; background:rgba(23,30,58,.82);
+  border:1px solid rgba(129,140,248,.32); display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:6px;
+  box-shadow:0 4px 18px rgba(0,0,0,.28); }
+.chip img { width:30px; height:30px; }
+.chip .nm { font-size:12px; font-weight:700; color:#E7ECFF; white-space:nowrap; }
+.chip .vd { font-size:9px; color:#8B94B8; margin-top:-3px; white-space:nowrap; }
+.stats { position:absolute; left:34px; right:34px; top:250px; display:flex; justify-content:center; gap:10px; }
+.pill { padding:5px 14px; border-radius:999px; background:rgba(99,102,241,.14);
+  border:1px solid rgba(129,140,248,.3); font-size:11.5px; color:#C7CFEA; font-weight:600; }
+.pill b { color:#7DD3FC; font-weight:800; }
+</style></head><body>
+<div class="glow1"></div><div class="glow2"></div><div class="grid"></div>
+
+<div class="head">
+  <div class="mark"><div class="hub">
+    <div class="ring"></div><div class="core"></div>
+    <div class="arm a1"></div><div class="arm a2"></div><div class="arm a3"></div><div class="arm a4"></div>
+    <div class="dot" style="left:-9px; top:-9px;"></div><div class="dot" style="right:-9px; top:-9px;"></div>
+    <div class="dot" style="left:-9px; bottom:-9px;"></div><div class="dot" style="right:-9px; bottom:-9px;"></div>
+  </div></div>
+  <div class="title">
+    <h1>agentapp-connector</h1>
+    <div class="cn">把任何应用，接入每一个 Agent 平台。</div>
+    <div class="en">One app profile → native configs, marketplace kits &amp; preflight checks — generated at once.</div>
+  </div>
+</div>
+
+<div class="chips">
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/workbuddy.png"><div class="nm">WorkBuddy</div><div class="vd">腾讯</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/qwenwork.png"><div class="nm">千问办公</div><div class="vd">阿里</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/doubao.png"><div class="nm">豆包工作</div><div class="vd">字节跳动</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/openai-white.svg"><div class="nm">ChatGPT / Codex</div><div class="vd">OpenAI</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/cursor-white.svg"><div class="nm">Cursor</div><div class="vd">Anysphere</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/claude.svg"><div class="nm">Claude</div><div class="vd">Anthropic</div></div>
+  <div class="chip"><img src="/Users/mac/WorkBuddy/2026-10-18-01-38-45/agentapp-connector/assets/logos/zcode.png"><div class="nm">ZCode</div><div class="vd">Z.ai</div></div>
+</div>
+
+<div class="stats">
+  <div class="pill"><b>7</b> 平台</div>
+  <div class="pill"><b>10</b> 个 target</div>
+  <div class="pill"><b>98</b> 条政策依据</div>
+  <div class="pill"><b>129</b> 条闸门测试</div>
+  <div class="pill"><b>0</b> 依赖 · Node ≥ 18</div>
+  <div class="pill" style="border-color:rgba(52,211,153,.45);background:rgba(16,185,129,.12);"><b style="color:#34D399;">3/3</b> stdio 真机验收</div>
+</div>
+</body></html>

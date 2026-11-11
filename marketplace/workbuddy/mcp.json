@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "openbot": {
+      "type": "streamableHttp",
+      "url": "https://mcp.example.invalid/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OPENBOT_GRANT_TOKEN}"
+      },
+      "_warning": "占位端点，不可解析；正式包不得硬编码真实 Token。"
+    }
+  }
+}

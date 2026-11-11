@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="0.55" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#0891B2"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="230" y1="230" x2="282" y2="282" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A5B4FC"/>
+      <stop offset="1" stop-color="#67E8F9"/>
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#bg)"/>
+  <!-- 四向连接：中枢 → 四个端点 -->
+  <g stroke="#FFFFFF" stroke-width="26" stroke-linecap="round">
+    <path d="M256 256 L166 166"/>
+    <path d="M256 256 L346 166"/>
+    <path d="M256 256 L166 346"/>
+    <path d="M256 256 L346 346"/>
+  </g>
+  <circle cx="166" cy="166" r="36" fill="#FFFFFF"/>
+  <circle cx="346" cy="166" r="36" fill="#FFFFFF"/>
+  <circle cx="166" cy="346" r="36" fill="#FFFFFF"/>
+  <circle cx="346" cy="346" r="36" fill="#FFFFFF"/>
+  <!-- 中枢：环 + 渐变芯 -->
+  <circle cx="256" cy="256" r="58" fill="#FFFFFF"/>
+  <circle cx="256" cy="256" r="30" fill="url(#inner)"/>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "_warning": "占位骨架：字段以 https://zcode.z.ai/cn/docs/plugin 与 zai-org/zcode-plugins CONTRIBUTING.md 为准；userConfig 条目的 schema 未取证，提交前须按官方样例核对。",
+  "name": "openbot-placeholder",
+  "version": "0.0.0-placeholder",
+  "description": "占位描述：需写明用途并披露命令执行 / MCP server 等副作用后再提交",
+  "author": {
+    "name": "PLACEHOLDER"
+  },
+  "userConfig": {
+    "OPENBOT_GRANT_TOKEN": {
+      "description": "受限 grant token（占位字段名，schema 以官方 userConfig 文档为准）",
+      "sensitive": true
+    }
+  },
+  "mcpServers": {
+    "openbot": {
+      "type": "http",
+      "url": "https://mcp.example.invalid/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.OPENBOT_GRANT_TOKEN}"
+      }
+    }
+  }
+}

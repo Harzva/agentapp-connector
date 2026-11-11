@@ -1,0 +1,22 @@
+{
+  "_warning": "占位骨架：正式提交时清单要放在插件仓库根目录、文件名 marketplace.json，条目的 name/version/description 与插件清单一致（CONTRIBUTING.md）；本文件不可作为市场添加。",
+  "name": "openbot-dev-market",
+  "plugins": [
+    {
+      "name": "openbot-placeholder",
+      "source": "./openbot-placeholder",
+      "version": "0.0.0-placeholder",
+      "description": "占位描述：与插件清单保持一致",
+      "displayName": "OpenBot（占位）",
+      "displayName_i18n": {
+        "en": "OpenBot (placeholder)",
+        "zh-CN": "OpenBot（占位）"
+      },
+      "description_i18n": {
+        "en": "Placeholder description",
+        "zh-CN": "占位描述：需写明实际用途"
+      },
+      "category": "developer-tools"
+    }
+  ]
+}

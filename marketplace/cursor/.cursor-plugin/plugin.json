@@ -1,0 +1,21 @@
+{
+  "_warning": "占位骨架，字段以 https://cursor.com/docs/reference/plugins 为准。",
+  "name": "openbot-placeholder",
+  "version": "0.0.0-placeholder",
+  "description": "占位描述：需清楚说明插件用途后再提交",
+  "license": "PLACEHOLDER",
+  "logo": "assets/logo.svg",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "OPENBOT_GRANT_TOKEN": {
+        "type": "string",
+        "title": "OpenBot grant token",
+        "description": "受限 grant token，由安装者在 Plugins → Configure 里设置"
+      }
+    },
+    "required": [
+      "OPENBOT_GRANT_TOKEN"
+    ]
+  }
+}

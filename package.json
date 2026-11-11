@@ -1,0 +1,32 @@
+{
+  "name": "agentapp-connector",
+  "version": "0.0.4",
+  "private": true,
+  "type": "module",
+  "description": "Connect any app to agent platforms: native MCP configs, marketplace kits and preflight checks for 7 platforms",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "agent",
+    "connector",
+    "workbuddy",
+    "qwenwork",
+    "doubao",
+    "chatgpt",
+    "codex",
+    "cursor",
+    "claude",
+    "zcode"
+  ],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node test/gate.mjs",
+    "test:raw": "node --test test/*.test.mjs",
+    "targets": "node src/cli.mjs targets",
+    "docs": "node scripts/render-docs.mjs",
+    "packs": "node scripts/render-packs.mjs",
+    "doctor": "node src/cli.mjs doctor",
+    "policies": "node src/cli.mjs policies --format text"
+  }
+}

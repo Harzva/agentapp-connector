@@ -1,0 +1,19 @@
+# 依赖与运行时产物
+node_modules/
+npm-debug.log*
+
+# 本地试验与沙箱产物
+local-test/
+.local-install/
+/tmp/
+
+# 安装备份（install-local 写前备份，本地留存即可）
+*.bak-*
+
+# macOS
+.DS_Store
+
+# 编辑器
+.idea/
+.vscode/
+*.swp

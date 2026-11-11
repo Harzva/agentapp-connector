@@ -1,0 +1,15 @@
+{
+  "_warning": "字段名与必填项以开放平台《连接器》为准；本文件只是占位骨架，不是官方 schema 实例。",
+  "name": "openbot",
+  "version": "0.0.0-placeholder",
+  "status": "NOT-SUBMITTED",
+  "displayName": "OpenBot（占位）",
+  "description": "占位描述：需按提交检查清单重写",
+  "minWorkbuddyVersion": "0.0.0-placeholder",
+  "icon": "icon.png",
+  "skills": [],
+  "missingAssets": [
+    "icon.png",
+    "skills/"
+  ]
+}

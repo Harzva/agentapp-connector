@@ -1,0 +1,55 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1020"/>
+      <stop offset="0.55" stop-color="#111736"/>
+      <stop offset="1" stop-color="#0D1B2E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="150" y1="60" x2="1100" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818CF8"/>
+      <stop offset="0.5" stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="88" y1="70" x2="216" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="0.55" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#0891B2"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop stop-color="#7C3AED" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="300" rx="28" fill="url(#sky)"/>
+  <g opacity="0.16">
+    <path stroke="#3B4A6B" stroke-width="1" d="M0 75.5 H1200 M0 150.5 H1200 M0 225.5 H1200"/>
+    <path stroke="#3B4A6B" stroke-width="1" d="M199.5 0 V300 M399.5 0 V300 M599.5 0 V300 M799.5 0 V300 M999.5 0 V300"/>
+  </g>
+  <ellipse cx="152" cy="150" rx="170" ry="150" fill="url(#halo)"/>
+
+  <!-- 项目标志（四向连接） -->
+  <g transform="translate(88 86)">
+    <rect x="0" y="0" width="128" height="128" rx="32" fill="url(#mark)"/>
+    <g stroke="#FFFFFF" stroke-width="7" stroke-linecap="round">
+      <path d="M64 64 L39 39"/>
+      <path d="M64 64 L89 39"/>
+      <path d="M64 64 L39 89"/>
+      <path d="M64 64 L89 89"/>
+    </g>
+    <circle cx="39" cy="39" r="9.5" fill="#FFFFFF"/>
+    <circle cx="89" cy="39" r="9.5" fill="#FFFFFF"/>
+    <circle cx="39" cy="89" r="9.5" fill="#FFFFFF"/>
+    <circle cx="89" cy="89" r="9.5" fill="#FFFFFF"/>
+    <circle cx="64" cy="64" r="15.5" fill="#FFFFFF"/>
+    <circle cx="64" cy="64" r="8" fill="#A5B4FC"/>
+  </g>
+
+  <!-- 主标题与副标题 -->
+  <text x="252" y="128" font-family="-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="52" font-weight="700" fill="#F4F6FB">agentapp-connector</text>
+  <text x="254" y="172" font-family="-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="600" fill="url(#accent)">把任何应用，接入每一个 Agent 平台。</text>
+  <text x="254" y="204" font-family="-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15.5" fill="#8B94B8">一份应用档案 → 本地配置 · 市场材料 · 平台体检  |  One app profile → configs, kits &amp; preflight</text>
+
+  <!-- 七平台一行 -->
+  <text x="254" y="245" font-family="-apple-system,'Segoe UI','PingFang SC',sans-serif" font-size="16" fill="#C7CFEA">WorkBuddy<tspan fill="#38BDF8">  ·  </tspan>千问办公<tspan fill="#38BDF8">  ·  </tspan>豆包工作<tspan fill="#38BDF8">  ·  </tspan>ChatGPT / Codex<tspan fill="#38BDF8">  ·  </tspan>Cursor<tspan fill="#38BDF8">  ·  </tspan>Claude<tspan fill="#38BDF8">  ·  </tspan>ZCode</text>
+</svg>
