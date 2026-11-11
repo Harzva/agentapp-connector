@@ -38,6 +38,12 @@ node src/cli.mjs doctor        # read-only local probing + real stdio handshake
 node src/cli.mjs market-preflight   # what's still missing before any marketplace submission
 ```
 
+> Unlike SaaS-to-agent gateways (Composio, OpenConnector) that wire existing SaaS APIs into agents, this tool works the other way around: it publishes **your own app** as an MCP server into agent platforms.
+
+```sh
+git clone https://github.com/Harzva/agentapp-connector.git && cd agentapp-connector && npm test
+```
+
 See the [Chinese README](../README.md) for the full usage, the engineering round-by-round log, the policy evidence library, and the honest "not done yet" list.
 
 ## License & trademarks

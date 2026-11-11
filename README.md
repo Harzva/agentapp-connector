@@ -37,6 +37,8 @@
 
 独立开发的跨 Agent 应用连接器配置生成器。OpenBot 作为 MCP 服务端发布单个 Bot，本工具把同一个发布地址翻译成各 Agent 应用能用的配置；不依赖或复制 `agent-connector`，也不替代 OpenBot 自身的发布、授权与权限流程。
 
+> **定位与 Composio / OpenConnector 相反**：它们把现成 SaaS 的 API 接给 Agent 用；本工具处理的是反方向——把**你自己的应用**发布成 MCP 服务，并接入各 Agent 平台（本地配置 + 市场上架 + 平台体检一条龙）。
+
 `openbot-workbuddy-connector`（stdio，6 工具）只是其中一个接入形态，在注册表里是 `workbuddy-stdio`。0.0.4 覆盖 **10 个 target / 7 个平台 / 98 条政策·本地·市场依据**，把每个平台的政策地址、本地模式、市场上架条件做成机器可读注册表，并由此生成三份文档与一套占位上架材料。
 
 需要 Node.js 18 或以上，无第三方运行依赖。
@@ -117,9 +119,27 @@
 ## 🚀 快速上手
 
 ```sh
+git clone https://github.com/Harzva/agentapp-connector.git && cd agentapp-connector
 npm test                                   # 129 条闸门用例，退出码 0 才算过
 node src/cli.mjs doctor                    # 本机 19 项只读探测 + stdio 真实握手
 node src/cli.mjs market-preflight          # 7 个平台的上架前置检查
+```
+
+一条命令就能拿到某个平台的可粘贴配置——例如 ZCode 的嵌套 `mcp.servers` 形状：
+
+```sh
+$ node src/cli.mjs config http://127.0.0.1:4818/mcp/PUBLICATION_ID --target zcode
+{
+  "target": "zcode",
+  "format": "json",
+  "config": {
+    "mcp": {
+      "servers": {
+        "openbot": { "type": "http", "url": "http://127.0.0.1:4818/mcp/PUBLICATION_ID" }
+      }
+    }
+  }
+}
 ```
 
 更多命令见[用法](#用法)。
