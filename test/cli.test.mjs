@@ -32,12 +32,7 @@ test('targets 列出全部客户端与未完成清单', () => {
     'qwenwork', 'workbuddy-http', 'workbuddy-stdio', 'doubao-work', 'codex', 'codex-stdio', 'cursor', 'zcode', 'zcode-stdio', 'claude-desktop',
   ]);
   assert.deepEqual(listing.planned.map((item) => item.id), [
-    'chatgpt-web', 'qwenwork-market', 'workbuddy-market',
-  ]);
-  assert.deepEqual(listing.planned.map((item) => item.reason), [
-    '网页版不读取本地 Codex 配置，需发布为远程 MCP 插件后由工作区安装',
-    '当前版本不允许个人用户上传或发布自定义能力，企业空间仅组织内共享',
-    '需主体认证、公网 HTTPS MCP Server、Connector 包与平台审核',
+    'chatgpt-web', 'qwenwork-market', 'workbuddy-market', 'dingtalk-market', 'feishu-aily-market',
   ]);
   assert.equal(listing.targets.every((item) => item.liveTested === false), true);
 });

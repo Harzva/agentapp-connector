@@ -180,12 +180,14 @@ test('注册表每个条目都被生成路径真实读取，未完成清单保�
   assert.equal(new Set(targets.map((item) => item.id)).size, targets.length);
   assert.equal(listing.targets.every((item) => item.liveTested === false), true);
   assert.deepEqual(listing.planned.map((item) => item.id), [
-    'chatgpt-web', 'qwenwork-market', 'workbuddy-market',
+    'chatgpt-web', 'qwenwork-market', 'workbuddy-market', 'dingtalk-market', 'feishu-aily-market',
   ]);
   assert.deepEqual(listing.planned.map((item) => item.reason), [
     '网页版不读取本地 Codex 配置，需发布为远程 MCP 插件后由工作区安装',
     '当前版本不允许个人用户上传或发布自定义能力，企业空间仅组织内共享',
     '需主体认证、公网 HTTPS MCP Server、Connector 包与平台审核',
+    '官方提供第三方 MCP Server 接入路径（AI 能力中心 MCP 广场与助理插件配置，SSE / Streamable HTTP + Headers，见 open.dingtalk.com 文档）；上架与审核口径未取证，暂未建 target',
+    '企业内 MCP 市场（{公司前缀}.feishu.cn/ai/mcpservers）支持注册企业内部 MCP 服务与自定义 MCP 工具（HTTP Streaming）；属企业内路径，公开上架口径未取证，暂未建 target',
   ]);
   assert.equal(listing.planned.length, plannedTargets.length);
 

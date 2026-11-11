@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agentapp-connector — 把任何应用，接入每一个 Agent 平台</title>
+<meta name="description" content="一份应用档案 → WorkBuddy、千问办公、豆包工作、ChatGPT/Codex、Cursor、Claude、ZCode 七大 Agent 平台的原生 MCP 配置、市场材料与平台体检报告，一次生成。零依赖，Node ≥ 18。">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:#0B1020; color:#E9EEF9; line-height:1.65; }
+a { color:#8AB4FF; text-decoration:none; } a:hover { text-decoration:underline; }
+.wrap { max-width:1000px; margin:0 auto; padding:0 24px; }
+.hero { text-align:center; padding:64px 24px 40px; position:relative;
+  background:radial-gradient(ellipse 60% 80% at 50% -10%, rgba(124,58,237,.35), transparent); }
+.hero img.banner { width:min(100%,880px); border-radius:18px; box-shadow:0 24px 80px rgba(0,0,0,.5); }
+.hero h1 { font-size:34px; margin:28px 0 8px; }
+.hero .tag { font-size:18px; font-weight:700; color:#A5B4FC; }
+.hero .sub { color:#8B94B8; margin-top:6px; font-size:14.5px; }
+.cta { margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn { padding:10px 22px; border-radius:10px; font-weight:700; font-size:15px;
+  border:1px solid rgba(129,140,248,.5); color:#E9EEF9; }
+.btn.primary { background:linear-gradient(135deg,#4F46E5,#7C3AED); border:none;
+  box-shadow:0 6px 24px rgba(124,58,237,.4); }
+h2 { font-size:24px; margin:56px 0 18px; padding-bottom:8px; border-bottom:1px solid #223; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; }
+.card { background:#141B33; border:1px solid #24304F; border-radius:14px; padding:18px; }
+.card h3 { font-size:15.5px; color:#C7CFEA; margin-bottom:6px; }
+.card p { font-size:13.5px; color:#9AA4C4; }
+.plat { display:flex; flex-wrap:wrap; gap:12px; }
+.plat .p { flex:1 1 200px; background:#141B33; border:1px solid #24304F; border-radius:14px;
+  padding:16px; display:flex; align-items:center; gap:12px; }
+.plat img { width:42px; height:42px; border-radius:10px; }
+.plat .n { font-weight:700; font-size:15px; } .plat .v { font-size:12px; color:#8B94B8; }
+pre { background:#10172E; border:1px solid #24304F; border-radius:12px; padding:18px;
+  overflow:auto; font-size:13.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#C9D6FF; line-height:1.7; }
+.note { font-size:13px; color:#8B94B8; margin-top:10px; }
+.ok { color:#34D399; font-weight:700; }
+footer { text-align:center; color:#6B7494; font-size:13px; padding:48px 24px 40px; }
+footer a { color:#8AB4FF; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="banner" src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/banner.png"
+       alt="agentapp-connector — 把任何应用，接入每一个 Agent 平台">
+  <h1>agentapp-connector</h1>
+  <div class="tag">把任何应用，接入每一个 Agent 平台。</div>
+  <div class="sub">一份应用档案 → 原生配置 · 市场材料 · 平台体检，一次生成。Open source · MIT。</div>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/Harzva/agentapp-connector">GitHub 仓库</a>
+    <a class="btn" href="https://github.com/Harzva/agentapp-connector/blob/main/README.md">完整文档</a>
+    <a class="btn" href="https://github.com/Harzva/agentapp-connector/blob/main/docs/POLICIES.md">政策依据库</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <h2>它解决什么问题</h2>
+  <div class="grid">
+    <div class="card"><h3>🧩 平台差异全部吸收</h3><p>TOML 表 / camelCase / 嵌套 <code>mcp.servers</code> / UI 表单清单——逐平台按官方示例生成，绝不一份 JSON 走天下。</p></div>
+    <div class="card"><h3>📦 市场材料一次成型</h3><p>7 个平台的提交清单与占位包骨架全部由机器可读注册表生成，改一处全量重渲，CI 防漂移。</p></div>
+    <div class="card"><h3>🛡 98 条政策依据</h3><p>每条带 <code>fetched / indexed / sample / tutorial</code> 证据等级与取证边界，不编造条款。</p></div>
+    <div class="card"><h3>🩺 平台体检三件套</h3><p><code>doctor</code>（19 项只读探测 + stdio 真握手）、<code>local-status</code>、<code>market-preflight</code>。</p></div>
+    <div class="card"><h3 class="ok">✓ 真机验收</h3><p>stdio 链路对在线桌面实测 <b class="ok">3/3 verified</b>：19 项 doctor、129 条闸门、CI 三档 Node 全绿。</p></div>
+    <div class="card"><h3>🔌 零依赖</h3><p>Node ≥ 18 即可运行，无任何第三方包；代码即文档，全链路可复核。</p></div>
+  </div>
+
+  <h2>支持的 7 个平台</h2>
+  <div class="plat">
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/workbuddy.png" alt="WorkBuddy"><div><div class="n">WorkBuddy</div><div class="v">腾讯 · 提交审核后发布</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/qwenwork.png" alt="千问办公"><div><div class="n">千问办公</div><div class="v">阿里 · 组织内提交</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/doubao.png" alt="豆包工作"><div><div class="n">豆包工作</div><div class="v">字节跳动 · 内测邀请制</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/openai-white.svg" alt="ChatGPT / Codex"><div><div class="n">ChatGPT / Codex</div><div class="v">OpenAI · 目录审核</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/cursor-white.svg" alt="Cursor"><div><div class="n">Cursor</div><div class="v">Anysphere · 插件审核·须免费</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/claude.svg" alt="Claude"><div><div class="n">Claude</div><div class="v">Anthropic · 目录审核</div></div></div>
+    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/zcode.png" alt="ZCode"><div><div class="n">ZCode</div><div class="v">Z.ai · PR 审核·可自带 stdio</div></div></div>
+  </div>
+  <p class="note">✓ = 已能生成该平台的本地配置与市场材料；市场材料均为 NOT-SUBMITTED 占位骨架，没有任何平台已提交或已上架。钉钉（MCP 广场）与飞书（aily MCP 市场）已列入下一批规划。平台名称与商标归各自权利人所有。</p>
+
+  <h2>30 秒上手</h2>
+<pre>git clone https://github.com/Harzva/agentapp-connector.git && cd agentapp-connector
+npm test                                <span style="color:#5A6B94"># 129 条闸门用例，退出码 0 才算过</span>
+node src/cli.mjs doctor                 <span style="color:#5A6B94"># 本机 19 项只读探测 + stdio 真实握手</span>
+node src/cli.mjs market-preflight       <span style="color:#5A6B94"># 7 个平台的上架前置检查</span></pre>
+  <p class="note">更多命令与逐轮工程记录见仓库 README；安全报告流程见 SECURITY.md。</p>
+
+  <h2>定位</h2>
+  <div class="card"><p>与 Composio、OpenConnector 这类「把现成 SaaS 的 API 接给 Agent」的网关<b style="color:#C7CFEA">方向相反</b>：agentapp-connector 处理的是把<b style="color:#C7CFEA">你自己的应用</b>发布成 MCP 服务，并接入各 Agent 平台——本地配置、市场上架材料与平台体检一条龙。</p></div>
+</div>
+
+<footer>
+  <a href="https://github.com/Harzva/agentapp-connector">GitHub</a> ·
+  <a href="https://github.com/Harzva/agentapp-connector/blob/main/LICENSE">MIT License</a>（平台商标除外）·
+  <a href="https://github.com/Harzva/agentapp-connector/blob/main/assets/logos/SOURCES.md">素材来源</a> ·
+  市场材料均为未提交占位骨架，本项目与所列平台无隶属或背书关系
+</footer>
+
+</body>
+</html>

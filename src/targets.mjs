@@ -218,4 +218,6 @@ export const plannedTargets = [
   { id: 'chatgpt-web', label: 'ChatGPT 网页版', reason: '网页版不读取本地 Codex 配置，需发布为远程 MCP 插件后由工作区安装' },
   { id: 'qwenwork-market', label: '千问办公公共扩展市场', reason: '当前版本不允许个人用户上传或发布自定义能力，企业空间仅组织内共享' },
   { id: 'workbuddy-market', label: 'WorkBuddy Connector 市场', reason: '需主体认证、公网 HTTPS MCP Server、Connector 包与平台审核' },
+  { id: 'dingtalk-market', label: '钉钉 AI 助理 / MCP 广场', reason: '官方提供第三方 MCP Server 接入路径（AI 能力中心 MCP 广场与助理插件配置，SSE / Streamable HTTP + Headers，见 open.dingtalk.com 文档）；上架与审核口径未取证，暂未建 target' },
+  { id: 'feishu-aily-market', label: '飞书 aily MCP 市场', reason: '企业内 MCP 市场（{公司前缀}.feishu.cn/ai/mcpservers）支持注册企业内部 MCP 服务与自定义 MCP 工具（HTTP Streaming）；属企业内路径，公开上架口径未取证，暂未建 target' },
 ];
