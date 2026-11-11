@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>agentapp-connector — 把任何应用，接入每一个 Agent 平台</title>
-<meta name="description" content="一份应用档案 → WorkBuddy、千问办公、豆包工作、ChatGPT/Codex、Cursor、Claude、ZCode 七大 Agent 平台的原生 MCP 配置、市场材料与平台体检报告，一次生成。零依赖，Node ≥ 18。">
+<meta name="description" content="一份应用档案 → WorkBuddy、千问办公、豆包工作、ChatGPT/Codex、Cursor、Claude、ZCode 七大 Agent 平台的原生 MCP 配置、市场材料与平台体检报告，一次生成。零依赖，MIT 开源。">
 <meta property="og:title" content="agentapp-connector — 把任何应用，接入每一个 Agent 平台">
 <meta property="og:description" content="七大 Agent 平台的原生 MCP 配置、市场材料与平台体检报告，一次生成。零依赖，MIT 开源。">
 <meta property="og:image" content="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/social-card.png">
@@ -13,94 +13,221 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { font-family:-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-  background:#0B1020; color:#E9EEF9; line-height:1.65; }
-a { color:#8AB4FF; text-decoration:none; } a:hover { text-decoration:underline; }
-.wrap { max-width:1000px; margin:0 auto; padding:0 24px; }
-.hero { text-align:center; padding:64px 24px 40px; position:relative;
-  background:radial-gradient(ellipse 60% 80% at 50% -10%, rgba(124,58,237,.35), transparent); }
-.hero img.banner { width:min(100%,880px); border-radius:18px; box-shadow:0 24px 80px rgba(0,0,0,.5); }
-.hero h1 { font-size:34px; margin:28px 0 8px; }
-.hero .tag { font-size:18px; font-weight:700; color:#A5B4FC; }
-.hero .sub { color:#8B94B8; margin-top:6px; font-size:14.5px; }
-.cta { margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.btn { padding:10px 22px; border-radius:10px; font-weight:700; font-size:15px;
-  border:1px solid rgba(129,140,248,.5); color:#E9EEF9; }
-.btn.primary { background:linear-gradient(135deg,#4F46E5,#7C3AED); border:none;
-  box-shadow:0 6px 24px rgba(124,58,237,.4); }
-h2 { font-size:24px; margin:56px 0 18px; padding-bottom:8px; border-bottom:1px solid #223; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; }
-.card { background:#141B33; border:1px solid #24304F; border-radius:14px; padding:18px; }
-.card h3 { font-size:15.5px; color:#C7CFEA; margin-bottom:6px; }
-.card p { font-size:13.5px; color:#9AA4C4; }
-.plat { display:flex; flex-wrap:wrap; gap:12px; }
-.plat .p { flex:1 1 200px; background:#141B33; border:1px solid #24304F; border-radius:14px;
-  padding:16px; display:flex; align-items:center; gap:12px; }
-.plat img { width:42px; height:42px; border-radius:10px; }
-.plat .n { font-weight:700; font-size:15px; } .plat .v { font-size:12px; color:#8B94B8; }
-pre { background:#10172E; border:1px solid #24304F; border-radius:12px; padding:18px;
-  overflow:auto; font-size:13.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  color:#C9D6FF; line-height:1.7; }
-.note { font-size:13px; color:#8B94B8; margin-top:10px; }
-.ok { color:#34D399; font-weight:700; }
-footer { text-align:center; color:#6B7494; font-size:13px; padding:48px 24px 40px; }
-footer a { color:#8AB4FF; }
+  background:#fff; color:#0A0A0A; line-height:1.6; }
+.mono { font-family:ui-monospace,SFMono-Regular,Menlo,'Courier New',monospace; letter-spacing:.06em; }
+a { text-decoration:none; color:inherit; }
+.wrap { max-width:1080px; margin:0 auto; padding:0 28px; }
+
+/* 顶部公告条 */
+.strip { background:#4F3EEB; color:#fff; text-align:center; font-size:13px; padding:9px 16px; }
+.strip b { font-weight:800; } .strip .new { background:#fff; color:#4F3EEB; font-size:10.5px;
+  padding:1.5px 7px; border-radius:4px; font-weight:800; margin-right:8px; vertical-align:1px; }
+
+/* 黑色导航 */
+nav { background:#0A0A0A; color:#fff; position:sticky; top:0; z-index:50;
+  border-bottom:1px solid #1d1d1d; }
+nav .wrap { display:flex; align-items:center; justify-content:space-between; height:62px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:17px; }
+.mark { width:30px; height:30px; border-radius:8px; background:linear-gradient(140deg,#4F46E5,#7C3AED 55%,#0891B2);
+  position:relative; }
+.mark::before { content:''; position:absolute; inset:8px; border:2.5px solid #fff; border-radius:50%; }
+.mark::after { content:''; position:absolute; left:12px; top:12px; width:6px; height:6px; border-radius:50%; background:#67E8F9; }
+nav .links { display:flex; gap:26px; align-items:center; font-size:13px; }
+nav .links a { color:#EDEDED; text-transform:uppercase; letter-spacing:.08em; }
+nav .links a:hover { color:#9F8FFF; }
+nav .cta-btn { background:#fff; color:#0A0A0A; padding:8px 16px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.06em; font-size:12.5px; border:1px solid #fff; }
+nav .cta-btn:hover { background:#e8e8e8; }
+
+/* 黑色 hero */
+.hero { background:#0A0A0A; color:#fff; padding:96px 0 72px; overflow:hidden; position:relative; }
+.hero::before, .hero::after { content:''; position:absolute; width:340px; height:340px; border-radius:50%;
+  background:radial-gradient(circle,rgba(79,62,235,.28),transparent 68%); }
+.hero::before { left:-160px; top:-80px; } .hero::after { right:-160px; top:40px; }
+.hero .wrap { text-align:center; position:relative; }
+.hero h1 { font-size:56px; line-height:1.16; font-weight:800; letter-spacing:-.015em; }
+.hero h1 .hl { background:#3D2EEB; padding:0 14px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.hero .sub { color:#B9B9B9; font-size:16.5px; margin-top:20px; max-width:640px; margin-left:auto; margin-right:auto; }
+.hero .ctas { margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-white { background:#fff; color:#0A0A0A; padding:13px 26px; font-weight:800; font-size:13px;
+  text-transform:uppercase; letter-spacing:.08em; }
+.btn-white:hover { background:#e4e4e4; }
+.btn-ghost { background:transparent; color:#fff; border:1px solid #3a3a3a; padding:13px 26px;
+  font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.08em; }
+.btn-ghost:hover { border-color:#888; }
+
+/* 平台 logo 墙（黑底白字区底部） */
+.trusted { background:#0A0A0A; color:#fff; padding:8px 0 64px; }
+.trusted .label { text-align:center; color:#8a8a8a; font-size:11.5px; letter-spacing:.18em;
+  text-transform:uppercase; margin-bottom:26px; }
+.logos { display:flex; flex-wrap:wrap; justify-content:center; gap:14px 34px; align-items:center; }
+.logos .lg { display:flex; align-items:center; gap:10px; opacity:.92; }
+.logos img { width:34px; height:34px; border-radius:8px; }
+.logos .lg svg { width:34px; height:34px; }
+.logos .n { font-weight:700; font-size:14.5px; color:#EDEDED; }
+.logos .v { font-size:10.5px; color:#7a7a7a; display:block; margin-top:-2px; }
+
+/* 白色大标题区 */
+.sect { padding:88px 0 72px; }
+.sect h2 { font-size:42px; text-align:center; font-weight:800; letter-spacing:-.015em; line-height:1.2; }
+.sect h2 .ind { color:#3D2EEB; }
+.sect .lead { text-align:center; color:#5a5a5a; font-size:16.5px; max-width:620px; margin:16px auto 0; }
+.sect .center { text-align:center; margin-top:26px; }
+.btn-outline { display:inline-block; border:1px solid #0A0A0A; padding:12px 24px; font-weight:800;
+  font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; }
+.btn-outline:hover { background:#0A0A0A; color:#fff; }
+
+/* How it works 三步 */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px; }
+.step { border:1px solid #e3e3e3; border-radius:14px; padding:26px 24px; background:#fff; }
+.step .no { font-family:ui-monospace,Menlo,monospace; color:#3D2EEB; font-weight:800; font-size:13px;
+  letter-spacing:.14em; }
+.step h3 { font-size:17.5px; margin:10px 0 8px; }
+.step p { font-size:14px; color:#5a5a5a; }
+.step code { background:#f2f2f2; padding:1px 6px; border-radius:4px; font-size:12.5px; }
+
+/* 特性四卡（勾选列表风格） */
+.feats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:44px; }
+.feat { border:1px solid #e3e3e3; border-radius:14px; padding:24px 22px; background:#fafafa; }
+.feat .ic { width:38px; height:38px; border-radius:9px; display:flex; align-items:center;
+  justify-content:center; font-size:18px; margin-bottom:14px; background:#EDEBFF; }
+.feat h3 { font-size:15.5px; margin-bottom:10px; }
+.feat ul { list-style:none; }
+.feat li { font-size:13.5px; color:#5a5a5a; padding:3px 0 3px 22px; position:relative; }
+.feat li::before { content:'✓'; position:absolute; left:2px; color:#0F9D58; font-weight:800; }
+
+/* 数据条（黑） */
+.stats-band { background:#0A0A0A; color:#fff; padding:46px 0; }
+.stats-band .wrap { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+.stat { border:1px solid #2c2c2c; border-radius:999px; padding:10px 24px; font-size:14px; color:#C9C9C9; }
+.stat b { color:#7DD3FC; font-weight:800; font-size:16px; }
+.stat.grn b { color:#34D399; }
+
+/* FAQ */
+.faq { display:grid; grid-template-columns:300px 1fr; gap:48px; margin-top:44px; }
+.faq h2 { text-align:left; font-size:38px; border:none; }
+details { border-bottom:1px solid #e3e3e3; padding:16px 4px; }
+details summary { cursor:pointer; font-size:15.5px; font-weight:600; list-style:none;
+  display:flex; justify-content:space-between; align-items:center; }
+details summary::-webkit-details-marker { display:none; }
+details summary::after { content:'+'; font-size:20px; color:#888; font-weight:400; }
+details[open] summary::after { content:'−'; }
+details p { font-size:14px; color:#5a5a5a; margin-top:10px; }
+
+/* 页脚 */
+footer { background:#0A0A0A; color:#9a9a9a; padding:40px 0; font-size:13px; }
+footer .wrap { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+footer a { color:#C9C9C9; text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width: 900px) {
+  .hero h1 { font-size:38px; }
+  .steps, .feats { grid-template-columns:1fr; }
+  .faq { grid-template-columns:1fr; gap:20px; }
+  nav .links a { display:none; }
+}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <img class="banner" src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/banner.png"
-       alt="agentapp-connector — 把任何应用，接入每一个 Agent 平台">
-  <h1>agentapp-connector</h1>
-  <div class="tag">把任何应用，接入每一个 Agent 平台。</div>
-  <div class="sub">一份应用档案 → 原生配置 · 市场材料 · 平台体检，一次生成。Open source · MIT。</div>
-  <div class="cta">
-    <a class="btn primary" href="https://github.com/Harzva/agentapp-connector">GitHub 仓库</a>
-    <a class="btn" href="https://github.com/Harzva/agentapp-connector/blob/main/README.md">完整文档</a>
-    <a class="btn" href="https://github.com/Harzva/agentapp-connector/blob/main/docs/POLICIES.md">政策依据库</a>
+<div class="strip"><span class="new">NEW</span><b>stdio 真机验收 3/3 verified</b> · 129 条闸门 · CI 三档 Node 全绿　<a href="https://github.com/Harzva/agentapp-connector" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">EXPLORE →</a></div>
+
+<nav><div class="wrap">
+  <div class="brand"><div class="mark"></div>agentapp-connector</div>
+  <div class="links mono">
+    <a href="#platforms">PLATFORMS</a>
+    <a href="#how">HOW IT WORKS</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://github.com/Harzva/agentapp-connector/blob/main/README.md">DOCS</a>
+    <a class="cta-btn" href="https://github.com/Harzva/agentapp-connector">GET STARTED — FREE</a>
   </div>
-</div>
+</div></nav>
 
-<div class="wrap">
-  <h2>它解决什么问题</h2>
-  <div class="grid">
-    <div class="card"><h3>🧩 平台差异全部吸收</h3><p>TOML 表 / camelCase / 嵌套 <code>mcp.servers</code> / UI 表单清单——逐平台按官方示例生成，绝不一份 JSON 走天下。</p></div>
-    <div class="card"><h3>📦 市场材料一次成型</h3><p>7 个平台的提交清单与占位包骨架全部由机器可读注册表生成，改一处全量重渲，CI 防漂移。</p></div>
-    <div class="card"><h3>🛡 98 条政策依据</h3><p>每条带 <code>fetched / indexed / sample / tutorial</code> 证据等级与取证边界，不编造条款。</p></div>
-    <div class="card"><h3>🩺 平台体检三件套</h3><p><code>doctor</code>（19 项只读探测 + stdio 真握手）、<code>local-status</code>、<code>market-preflight</code>。</p></div>
-    <div class="card"><h3 class="ok">✓ 真机验收</h3><p>stdio 链路对在线桌面实测 <b class="ok">3/3 verified</b>：19 项 doctor、129 条闸门、CI 三档 Node 全绿。</p></div>
-    <div class="card"><h3>🔌 零依赖</h3><p>Node ≥ 18 即可运行，无任何第三方包；代码即文档，全链路可复核。</p></div>
+<div class="hero"><div class="wrap">
+  <h1>把任何应用，接入<br><span class="hl">每一个 Agent 平台</span></h1>
+  <div class="sub">一份应用档案 → 七大 Agent 平台的原生 MCP 配置、市场上架材料与平台体检报告，一次生成。零依赖，MIT 开源。</div>
+  <div class="ctas">
+    <a class="btn-white mono" href="https://github.com/Harzva/agentapp-connector">GET STARTED FOR FREE</a>
+    <a class="btn-ghost mono" href="#how">HOW IT WORKS</a>
   </div>
+</div></div>
 
-  <h2>支持的 7 个平台</h2>
-  <div class="plat">
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/workbuddy.png" alt="WorkBuddy"><div><div class="n">WorkBuddy</div><div class="v">腾讯 · 提交审核后发布</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/qwenwork.png" alt="千问办公"><div><div class="n">千问办公</div><div class="v">阿里 · 组织内提交</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/doubao.png" alt="豆包工作"><div><div class="n">豆包工作</div><div class="v">字节跳动 · 内测邀请制</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/openai-white.svg" alt="ChatGPT / Codex"><div><div class="n">ChatGPT / Codex</div><div class="v">OpenAI · 目录审核</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/cursor-white.svg" alt="Cursor"><div><div class="n">Cursor</div><div class="v">Anysphere · 插件审核·须免费</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/claude.svg" alt="Claude"><div><div class="n">Claude</div><div class="v">Anthropic · 目录审核</div></div></div>
-    <div class="p"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/zcode.png" alt="ZCode"><div><div class="n">ZCode</div><div class="v">Z.ai · PR 审核·可自带 stdio</div></div></div>
+<div class="trusted"><div class="wrap">
+  <div class="label mono">SUPPORTED PLATFORMS →</div>
+  <div class="logos">
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/workbuddy.png" alt="WorkBuddy"><div><span class="n">WorkBuddy</span><span class="v">腾讯</span></div></div>
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/qwenwork.png" alt="千问办公"><div><span class="n">千问办公</span><span class="v">阿里</span></div></div>
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/doubao.png" alt="豆包工作"><div><span class="n">豆包工作</span><span class="v">字节跳动</span></div></div>
+    <div class="lg"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" role="img"><title>OpenAI</title><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.783-2.7582a.7712.7712 0 0 0-.7806 0L9.798 9.1386V6.8061a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.6628zm-12.283 1.9728l-2.0201-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><div><span class="n">ChatGPT / Codex</span><span class="v">OpenAI</span></div></div>
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/cursor-white.svg" alt="Cursor"><div><span class="n">Cursor</span><span class="v">Anysphere</span></div></div>
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/claude.svg" alt="Claude"><div><span class="n">Claude</span><span class="v">Anthropic</span></div></div>
+    <div class="lg"><img src="https://raw.githubusercontent.com/Harzva/agentapp-connector/main/assets/logos/zcode.png" alt="ZCode"><div><span class="n">ZCode</span><span class="v">Z.ai</span></div></div>
   </div>
-  <p class="note">✓ = 已能生成该平台的本地配置与市场材料；市场材料均为 NOT-SUBMITTED 占位骨架，没有任何平台已提交或已上架。钉钉（MCP 广场）与飞书（aily MCP 市场）已列入下一批规划。平台名称与商标归各自权利人所有。</p>
+</div></div>
 
-  <h2>30 秒上手</h2>
-<pre>git clone https://github.com/Harzva/agentapp-connector.git && cd agentapp-connector
-npm test                                <span style="color:#5A6B94"># 129 条闸门用例，退出码 0 才算过</span>
-node src/cli.mjs doctor                 <span style="color:#5A6B94"># 本机 19 项只读探测 + stdio 真实握手</span>
-node src/cli.mjs market-preflight       <span style="color:#5A6B94"># 7 个平台的上架前置检查</span></pre>
-  <p class="note">更多命令与逐轮工程记录见仓库 README；安全报告流程见 SECURITY.md。</p>
+<div class="sect"><div class="wrap">
+  <h2>让 AI Agent 真正用上<span class="ind">你的应用</span></h2>
+  <p class="lead">Composio、OpenConnector 把现成 SaaS 接给 Agent；agentapp-connector 处理的是反方向——把<b>你自己的应用</b>发布成 MCP 服务，并接入各 Agent 平台。</p>
+  <div class="center"><a class="btn-outline mono" href="https://github.com/Harzva/agentapp-connector#-快速上手">TRY IT IN 30 SECONDS →</a></div>
 
-  <h2>定位</h2>
-  <div class="card"><p>与 Composio、OpenConnector 这类「把现成 SaaS 的 API 接给 Agent」的网关<b style="color:#C7CFEA">方向相反</b>：agentapp-connector 处理的是把<b style="color:#C7CFEA">你自己的应用</b>发布成 MCP 服务，并接入各 Agent 平台——本地配置、市场上架材料与平台体检一条龙。</p></div>
-</div>
+  <h2 id="how" style="margin-top:72px;">三步完成<span class="ind">声明 → 生成 → 验收</span></h2>
+  <p class="lead">不需要懂每个平台的配置格式，也不需要读它们的市场审核文档。</p>
+  <div class="steps">
+    <div class="step"><div class="no">STEP 01</div><h3>声明你的应用</h3><p>应用名、MCP 入口（stdio 命令或 HTTPS 地址）、工具清单、认证方式——就这四件事。</p></div>
+    <div class="step"><div class="no">STEP 02</div><h3>一次生成全部</h3><p>7 个平台的 <code>config</code>、<code>install-local</code> 安装计划、市场上架清单与占位包，全部由注册表生成。</p></div>
+    <div class="step"><div class="no">STEP 03</div><h3>体检与验收</h3><p><code>doctor</code> 19 项只读探测 + stdio 真握手；<code>market-preflight</code> 告诉你离上架还差什么。</p></div>
+  </div>
+</div></div>
 
-<footer>
-  <a href="https://github.com/Harzva/agentapp-connector">GitHub</a> ·
-  <a href="https://github.com/Harzva/agentapp-connector/blob/main/LICENSE">MIT License</a>（平台商标除外）·
-  <a href="https://github.com/Harzva/agentapp-connector/blob/main/assets/logos/SOURCES.md">素材来源</a> ·
-  市场材料均为未提交占位骨架，本项目与所列平台无隶属或背书关系
-</footer>
+<div class="sect" style="background:#FAFAFA;border-top:1px solid #eee;border-bottom:1px solid #eee;"><div class="wrap">
+  <h2>为什么是它</h2>
+  <p class="lead">每一层都有闸门与取证记录，宣传页上的每个数字都能复核。</p>
+  <div class="feats">
+    <div class="feat"><div class="ic">🧩</div><h3>平台差异全部吸收</h3><ul>
+      <li>TOML 表 / camelCase / 嵌套 mcp.servers</li><li>逐平台按官方示例生成</li><li>UI 表单输出填表清单</li></ul></div>
+    <div class="feat"><div class="ic">📦</div><h3>市场材料一次成型</h3><ul>
+      <li>7 份提交清单 + 占位包骨架</li><li>注册表驱动，改一处全量重渲</li><li>CI 防漂移检查</li></ul></div>
+    <div class="feat"><div class="ic">🛡</div><h3>98 条政策依据</h3><ul>
+      <li>fetched / indexed / sample / tutorial 分级</li><li>逐条取证边界说明</li><li>不编造条款</li></ul></div>
+    <div class="feat"><div class="ic">🩺</div><h3>体检三件套</h3><ul>
+      <li>doctor：19 项 + stdio 真握手</li><li>local-status：四态验证结论</li><li>market-preflight：9 项前置检查</li></ul></div>
+    <div class="feat"><div class="ic">✅</div><h3 class="ok" style="color:#0F9D58;">真机验收</h3><ul>
+      <li>stdio 链路 3/3 verified</li><li>对在线桌面实测 19 项 doctor</li><li>CI 三档 Node 全绿</li></ul></div>
+    <div class="feat"><div class="ic">🧪</div><h3>129 条闸门</h3><ul>
+      <li>条数 + 退出码双校验</li><li>变异验证钉住行为</li><li>泄漏 / 死链 / 资产闸门</li></ul></div>
+    <div class="feat"><div class="ic">🔌</div><h3>零依赖</h3><ul>
+      <li>Node ≥ 18 即可运行</li><li>无任何第三方包</li><li>代码即文档</li></ul></div>
+    <div class="feat"><div class="ic">📏</div><h3>诚实边界</h3><ul>
+      <li>市场材料全部 NOT-SUBMITTED</li><li>liveTested 如实为 false</li><li>不把占位说成已上架</li></ul></div>
+  </div>
+</div></div>
+
+<div class="stats-band"><div class="wrap">
+  <div class="stat"><b>7</b> 平台</div>
+  <div class="stat"><b>10</b> 个 target</div>
+  <div class="stat"><b>98</b> 条政策依据</div>
+  <div class="stat"><b>129</b> 条闸门测试</div>
+  <div class="stat"><b>0</b> 依赖 · Node ≥ 18</div>
+  <div class="stat grn"><b>3/3</b> stdio 真机验收</div>
+</div></div>
+
+<div class="sect" id="faq"><div class="wrap">
+  <div class="faq">
+    <div><h2>常见问题</h2></div>
+    <div>
+      <details open><summary>市场材料是已经上架了吗？</summary><p>没有。所有平台的市场材料都是 <code>NOT-SUBMITTED</code> 占位骨架，端点用保留域、凭据只有环境变量名。这个项目不把占位说成已上架——`market-preflight` 会告诉你离真实提交还差什么。</p></details>
+      <details><summary>和 Composio / OpenConnector 有什么区别？</summary><p>方向相反：它们把现成 SaaS 的 API 接给 Agent 用；本工具把<b>你自己的应用</b>发布成 MCP 服务并接入 Agent 平台，吸收的是各平台配置格式与上架审核的差异。</p></details>
+      <details><summary>需要公网服务器吗？</summary><p>本地配置生成不需要。市场上架普遍要求公网 HTTPS MCP Server——唯一的例外是 ZCode 插件市场：插件可自带 stdio MCP，不强制公网端点。逐平台条件见 <code>market-preflight</code>。</p></details>
+      <details><summary>支持哪些平台？</summary><p>当前 7 个：WorkBuddy、千问办公、豆包工作、ChatGPT/Codex、Cursor、Claude Desktop、ZCode。钉钉（MCP 广场）、飞书（aily MCP 市场）、百度 Comate / 文心智能体已列入下批规划。</p></details>
+      <details><summary>连接器本体在仓库里吗？</summary><p>不在。stdio 连接器是 OpenBot 工作区的独立实现；本仓库负责配置生成、市场材料与体检。可用 <code>--connector-path</code> 指向任意 MCP stdio 可执行文件。</p></details>
+      <details><summary>如何贡献？</summary><p>读 CONTRIBUTING.md 的十条纪律：闸门全绿、EXPECTED_CASES 同步、变异验证、政策事实必须带证据等级。CI 会在生成产物与注册表不同步时拒绝。</p></details>
+    </div>
+  </div>
+</div></div>
+
+<footer><div class="wrap">
+  <div><a href="https://github.com/Harzva/agentapp-connector">GitHub</a> · <a href="https://github.com/Harzva/agentapp-connector/blob/main/LICENSE">MIT License</a>（平台商标除外）</div>
+  <div>市场材料均为未提交占位骨架 · 本项目与所列平台无隶属或背书关系 · <a href="https://github.com/Harzva/agentapp-connector/blob/main/assets/logos/SOURCES.md">素材来源</a></div>
+</div></footer>
 
 </body>
 </html>

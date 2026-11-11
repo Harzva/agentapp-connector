@@ -220,4 +220,6 @@ export const plannedTargets = [
   { id: 'workbuddy-market', label: 'WorkBuddy Connector 市场', reason: '需主体认证、公网 HTTPS MCP Server、Connector 包与平台审核' },
   { id: 'dingtalk-market', label: '钉钉 AI 助理 / MCP 广场', reason: '官方提供第三方 MCP Server 接入路径（AI 能力中心 MCP 广场与助理插件配置，SSE / Streamable HTTP + Headers，见 open.dingtalk.com 文档）；上架与审核口径未取证，暂未建 target' },
   { id: 'feishu-aily-market', label: '飞书 aily MCP 市场', reason: '企业内 MCP 市场（{公司前缀}.feishu.cn/ai/mcpservers）支持注册企业内部 MCP 服务与自定义 MCP 工具（HTTP Streaming）；属企业内路径，公开上架口径未取证，暂未建 target' },
+  { id: 'baidu-comate', label: '百度 Comate AI IDE', reason: 'Zulu 智能体已作为 MCP 客户端支持 STDIO 与 SSE 传输（comate.baidu.com 官方文档与公开评测）；连接器配置口径未逐字段取证，暂未建 target' },
+  { id: 'wenxin-agents', label: '百度文心智能体平台（智能体广场）', reason: 'agents.baidu.com 支持插件生态与发布广场；千帆 AppBuilder 智能体 Pro 可添加 MCP 组件，但平台侧作为 MCP 客户端接入外部 Server 的口径未取证，暂未建 target' },
 ];

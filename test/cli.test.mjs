@@ -32,7 +32,7 @@ test('targets 列出全部客户端与未完成清单', () => {
     'qwenwork', 'workbuddy-http', 'workbuddy-stdio', 'doubao-work', 'codex', 'codex-stdio', 'cursor', 'zcode', 'zcode-stdio', 'claude-desktop',
   ]);
   assert.deepEqual(listing.planned.map((item) => item.id), [
-    'chatgpt-web', 'qwenwork-market', 'workbuddy-market', 'dingtalk-market', 'feishu-aily-market',
+    'chatgpt-web', 'qwenwork-market', 'workbuddy-market', 'dingtalk-market', 'feishu-aily-market', 'baidu-comate', 'wenxin-agents',
   ]);
   assert.equal(listing.targets.every((item) => item.liveTested === false), true);
 });
